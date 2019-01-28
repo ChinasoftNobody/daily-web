@@ -28,4 +28,8 @@ export class UserService {
         return false;
         // TODO login
     }
+
+    logout(): void {
+        this.loginStatus = false;
+    }
 }

@@ -24,8 +24,6 @@
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26",
     "bootstrap": "~4.2.1",
-    "jquery": "~3.3.1",
-    "popper.js": "^1.14.6",
     "ngx-bootstrap": "~3.2.0"
   },
   "devDependencies": {

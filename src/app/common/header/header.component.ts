@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {LoginComponent} from './login/login.component';
@@ -15,17 +15,12 @@ export class HeaderComponent {
     modalRef: BsModalRef;
 
     loginModal(): void {
-        const initialState = {
-            list: [
-                'Open a modal with component',
-                'Pass your data',
-                'Do something else',
-                '...'
-            ],
-            title: 'Modal with component'
-        };
-        this.modalRef = this.modalService.show(LoginComponent, {initialState});
+        this.modalRef = this.modalService.show(LoginComponent);
         this.modalRef.content.closeBtnName = 'Close';
+    }
+
+    logout(): void {
+        this.userService.logout();
     }
 
 
