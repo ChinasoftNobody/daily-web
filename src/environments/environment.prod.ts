@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  daily_server: 'localhost1:8080'
 };

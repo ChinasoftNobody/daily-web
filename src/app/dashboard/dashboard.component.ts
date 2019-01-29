@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {UserService} from '../services/user.service';
-
 
 
 @Component({
@@ -9,7 +7,7 @@ import {UserService} from '../services/user.service';
     styleUrls: []
 })
 export class DashboardComponent {
-    constructor(private userService: UserService) {
+    constructor() {
     }
-    title = this.userService.getTitle();
+
 }

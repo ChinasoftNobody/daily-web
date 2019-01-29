@@ -9,18 +9,20 @@ import {FooterComponent} from './common/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './common/header/login/login.component';
 import {BsDropdownModule, ModalModule, PaginationModule} from 'ngx-bootstrap';
+import {CookieService} from 'ngx-cookie-service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
         AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule, HttpClientModule,
         AppRoutingModule, FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), BsDropdownModule.forRoot(), PaginationModule.forRoot()
     ],
     entryComponents: [LoginComponent],
-    providers: [],
+    providers: [CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
