@@ -8,16 +8,17 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {FooterComponent} from './common/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './common/header/login/login.component';
-import {BsDropdownModule, ModalModule, PaginationModule} from 'ngx-bootstrap';
+import {BsDropdownModule, ModalModule, PaginationModule, TypeaheadModule} from 'ngx-bootstrap';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClientModule} from '@angular/common/http';
+import {LibraryComponent} from './library/library.component';
 
 @NgModule({
     declarations: [
-        AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent
+        AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent
     ],
     imports: [
-        BrowserModule, HttpClientModule,
+        BrowserModule, HttpClientModule, TypeaheadModule.forRoot(),
         AppRoutingModule, FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), BsDropdownModule.forRoot(), PaginationModule.forRoot()
     ],
