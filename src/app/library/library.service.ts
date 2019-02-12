@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {BookModel} from '../model/book.model';
 
 @Injectable({
     providedIn: 'root',
@@ -10,15 +11,17 @@ export class LibraryService {
      * @param keyword keyword
      * @param topNum topNum
      */
-    queryBooks(keyword: string, topNum: number) {
+    queryBooks(keyword: string, topNum: number): BookModel[] {
+        let number = 13;
         if (!!!keyword) {
             // queryAll
-            return [{name: 'java', isCollapsed: true}, {name: 'c', isCollapsed: true}, {name: 'c++', isCollapsed: true},
-                {name: 'python', isCollapsed: true}, {name: 'object-c', isCollapsed: true},
-                {name: 'java', isCollapsed: true}, {name: 'c', isCollapsed: true}, {name: 'c++', isCollapsed: true},
-                {name: 'python', isCollapsed: true}, {name: 'object-c', isCollapsed: true}];
+            number = 18;
         }
         // query filter
-        return [{name: 'java', isCollapsed : true}, {name: 'c', isCollapsed : true}, {name: 'c++', isCollapsed : true}];
+        const result: BookModel[] = new Array<BookModel>(number);
+        for (let i = 0; i < number; i++) {
+            result[i] = new BookModel();
+        }
+        return result;
     }
 }

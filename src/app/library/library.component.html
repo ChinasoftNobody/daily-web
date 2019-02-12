@@ -22,11 +22,11 @@
     <div class="list-group">
         <div *ngFor="let book of books">
             <a class="list-group-item list-group-item-action"  (click)="book.isCollapsed = !book.isCollapsed" routerLink=".">
-                <img class="rounded" width="50px" src="http://202.112.150.126/index.php?client=libcode&isbn=978-7-302-48812-5/cover" [alt]="book.name">
-                <span class="ml-sm-2">{{book.name}}</span>
+                <img class="rounded" width="50px" src="http://202.112.150.126/index.php?client=libcode&isbn=978-7-302-48812-5/cover" [alt]="book.title">
+                <span class="ml-sm-2">{{book.title}}</span>
             </a>
             <div [@slideToBottomTransition] *ngIf="!book.isCollapsed" class="card card-block card-header">
-                <div class="well well-lg">{{book.name}}</div>
+                <div class="well well-lg">{{book.subjectNames}}</div>
             </div>
         </div>
 
