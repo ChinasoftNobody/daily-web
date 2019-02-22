@@ -20,6 +20,12 @@ export const daily_server: ServerInfo = {
         interfaces: {
             'verifyUserInfo': {
                 path: '/user/verify'
+            },
+            'queryFromLib': {
+                path: '/book/queryFromLib'
+            },
+            'queryLocalBooks': {
+                path: '/book/query'
             }
         }, path(key: string) {
             return this.domain + '://' + this.name + '/daily' + this.interfaces[key].path;

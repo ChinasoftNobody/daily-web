@@ -3,7 +3,6 @@ import {HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpResponse} from '@ang
 import {Observable} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 import {USER_TOKEN_KEY} from './const.service';
-import {daily_server} from './rest.config';
 
 @Injectable({
     providedIn: 'root',

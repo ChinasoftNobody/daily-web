@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {PageChangedEvent, TypeaheadMatch} from 'ngx-bootstrap';
@@ -11,8 +11,8 @@ import {slideToBottomTransition} from '../animations/slide';
     styleUrls: [],
     animations: [slideToBottomTransition()]
 })
-export class LibraryComponent {
-    books = this.libraryService.queryBooks(null, null);
+export class LibraryComponent implements OnInit {
+    books = [];
     currentPage = 4;
     pageSize = 24;
     asyncSelected: string;
@@ -56,14 +56,22 @@ export class LibraryComponent {
      * @param e 事件
      */
     typeaheadOnSelect(e: TypeaheadMatch): void {
-        this.books = this.libraryService.queryBooks(e.value, null);
+        this.libraryService.queryBooks(e.value, null).subscribe(result => {
+            this.books = JSON.parse(JSON.stringify(result)).body.result.content;
+        }, error1 => {
+            console.error(error1);
+        });
     }
 
     /**
      * 监听输入变化
      */
     textChange() {
-        this.tipBooks = this.libraryService.queryBooks(this.asyncSelected, this.topNum);
+        this.libraryService.queryBooks(this.asyncSelected, this.topNum).subscribe(result => {
+            this.books = JSON.parse(JSON.stringify(result)).body.result.content;
+        }, error1 => {
+            console.error(error1);
+        });
     }
 
     /**
@@ -78,7 +86,11 @@ export class LibraryComponent {
      * 点击搜索
      */
     search() {
-        this.books = this.libraryService.queryBooks(this.asyncSelected, null);
+        this.libraryService.queryBooks(this.asyncSelected, null).subscribe(result => {
+            this.books = JSON.parse(JSON.stringify(result)).body.result.content;
+        }, error1 => {
+            console.error(error1);
+        });
     }
 
     /**
@@ -86,5 +98,13 @@ export class LibraryComponent {
      */
     enterKeyUp() {
         this.search();
+    }
+
+    ngOnInit(): void {
+        this.libraryService.queryBooks(null, null).subscribe(result => {
+            this.books = JSON.parse(JSON.stringify(result)).body.result.content;
+        }, error1 => {
+            console.error(error1);
+        });
     }
 }

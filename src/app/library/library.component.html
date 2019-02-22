@@ -23,39 +23,11 @@
         <div *ngFor="let book of books">
             <div class="list-group-item list-group-item-action">
                 <div class="row" (click)="book.isCollapsed = !book.isCollapsed">
-                    <img class="rounded" height="50px" src="http://202.112.150.126/index.php?client=libcode&isbn=978-7-302-48812-5/cover" [alt]="book.title">
+                    <img class="rounded" height="50px" src="{{book.imgUrl}}" [alt]="book.name">
                     <div class="ml-sm-2 col-auto align-self-center">
                         <div class="row">
-                            <a class="text-success" routerLink=".">{{book.title}}</a>
+                            <a class="text-success" routerLink=".">{{book.name}}</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div *ngIf="!book.isCollapsed" class="card card-block card-header">
-                <div class="row">
-                    <div class="col-6">
-                        <p>Author:</p>
-                        <p>{{book.personalNames}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        <p>Call Number:</p>
-                        <p>{{book.callNumber}}</p>
-                    </div>
-                    <div class="col-3">
-                        <p>Publications:</p>
-                        <p>{{book.publications}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        <p>Age:</p>
-                        <p>{{book.callNumber}}</p>
-                    </div>
-                    <div class="col-3">
-                        <p>Record Type:</p>
-                        <p>{{book.recordType}}</p>
                     </div>
                 </div>
             </div>
