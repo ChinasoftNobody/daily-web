@@ -13,10 +13,12 @@ import {CookieService} from 'ngx-cookie-service';
 import {HttpClientModule} from '@angular/common/http';
 import {LibraryComponent} from './library/library.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CreateModuleComponent} from './dashboard/create/create-module.component';
 
 @NgModule({
     declarations: [
-        AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent
+        AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent,
+        CreateModuleComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -24,7 +26,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         AppRoutingModule, FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), BsDropdownModule.forRoot(), PaginationModule.forRoot(), CollapseModule.forRoot()
     ],
-    entryComponents: [LoginComponent],
+    entryComponents: [LoginComponent, CreateModuleComponent],
     providers: [CookieService],
     bootstrap: [AppComponent]
 })

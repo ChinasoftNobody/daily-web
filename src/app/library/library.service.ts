@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {BookModel} from '../model/book.model';
 import {HttpService} from '../services/http.service';
 import {daily_server} from '../services/rest.config';
 import {Observable} from 'rxjs';
@@ -20,15 +19,10 @@ export class LibraryService {
      * @param topNum topNum
      */
     queryBooks(keyword: string, topNum: number): Observable<HttpResponse<Object>>  {
-        if (!!!keyword) {
-            return this.httpService.postObj(daily_server.path('queryLocalBooks'), {
-                keyword: keyword,
-                page: 0,
-                size: 10
-            });
-        }
-        return this.httpService.postObj(daily_server.path('queryFromLib'), {
-            keyword: keyword
+        return this.httpService.postObj(daily_server.path('queryLocalBooks'), {
+            keyword: keyword,
+            page: 0,
+            size: 10
         });
     }
 }

@@ -26,6 +26,9 @@ export const daily_server: ServerInfo = {
             },
             'queryLocalBooks': {
                 path: '/book/query'
+            },
+            'moduleFindAll': {
+                path: '/module/findAll'
             }
         }, path(key: string) {
             return this.domain + '://' + this.name + '/daily' + this.interfaces[key].path;

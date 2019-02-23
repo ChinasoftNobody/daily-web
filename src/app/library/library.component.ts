@@ -64,17 +64,6 @@ export class LibraryComponent implements OnInit {
     }
 
     /**
-     * 监听输入变化
-     */
-    textChange() {
-        this.libraryService.queryBooks(this.asyncSelected, this.topNum).subscribe(result => {
-            this.books = JSON.parse(JSON.stringify(result)).body.result.content;
-        }, error1 => {
-            console.error(error1);
-        });
-    }
-
-    /**
      * 分页查询
      * @param $event 事件
      */
