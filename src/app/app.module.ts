@@ -14,11 +14,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {LibraryComponent} from './library/library.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CreateModuleComponent} from './dashboard/create/create-module.component';
+import {ModuleDetailComponent} from './module/module.detail.component';
 
 @NgModule({
     declarations: [
         AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent,
-        CreateModuleComponent
+        CreateModuleComponent, ModuleDetailComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -28,7 +29,7 @@ import {CreateModuleComponent} from './dashboard/create/create-module.component'
     ],
     entryComponents: [LoginComponent, CreateModuleComponent],
     providers: [CookieService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent, FooterComponent]
 })
 export class AppModule {
 }

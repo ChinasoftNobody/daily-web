@@ -33,6 +33,9 @@ export class DashboardComponent implements OnInit {
     showCreateModuleModal() {
         this.bsModalRef = this.modalService.show(CreateModuleComponent);
         this.bsModalRef.content.closeBtnName = 'Close';
+        this.modalService.onHide.subscribe(() => {
+            this.queryModules();
+        });
     }
 
     ngOnInit(): void {

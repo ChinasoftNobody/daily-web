@@ -29,6 +29,9 @@ export const daily_server: ServerInfo = {
             },
             'moduleFindAll': {
                 path: '/module/findAll'
+            },
+            'createModule': {
+                path: '/module/create'
             }
         }, path(key: string) {
             return this.domain + '://' + this.name + '/daily' + this.interfaces[key].path;
