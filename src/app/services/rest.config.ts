@@ -32,6 +32,9 @@ export const daily_server: ServerInfo = {
             },
             'createModule': {
                 path: '/module/create'
+            },
+            'queryModuleById': {
+                path: '/module/queryById'
             }
         }, path(key: string) {
             return this.domain + '://' + this.name + '/daily' + this.interfaces[key].path;

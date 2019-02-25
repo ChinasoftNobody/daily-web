@@ -19,4 +19,8 @@ export class ModuleService {
     createModule(module: { name: string; type: ModuleType; desc: string }): Observable<HttpResponse<Object>>  {
         return this.http.postObj(daily_server.path('createModule'), module);
     }
+
+    queryModuleById(id: string): Observable<HttpResponse<Object>>   {
+        return this.http.postObj(daily_server.path('queryModuleById'), {id: id});
+    }
 }
