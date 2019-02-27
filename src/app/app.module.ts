@@ -15,11 +15,13 @@ import {LibraryComponent} from './library/library.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CreateModuleComponent} from './dashboard/create/create-module.component';
 import {ModuleDetailComponent} from './module/module.detail.component';
+import {PluginComponent} from './plugin/plugin.component';
+import {CreatePluginComponent} from './plugin/create/create-plugin.component';
 
 @NgModule({
     declarations: [
         AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent,
-        CreateModuleComponent, ModuleDetailComponent
+        CreateModuleComponent, ModuleDetailComponent, PluginComponent, CreatePluginComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -27,7 +29,7 @@ import {ModuleDetailComponent} from './module/module.detail.component';
         AppRoutingModule, FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), BsDropdownModule.forRoot(), PaginationModule.forRoot(), CollapseModule.forRoot()
     ],
-    entryComponents: [LoginComponent, CreateModuleComponent],
+    entryComponents: [LoginComponent, CreateModuleComponent, CreatePluginComponent],
     providers: [CookieService],
     bootstrap: [AppComponent, FooterComponent]
 })

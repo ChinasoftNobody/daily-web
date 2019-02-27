@@ -21,12 +21,33 @@ export class HttpService {
     }
 
     /**
-     * post
-     * @param url prefix
+     * post for callback method
+     * @param url url
      * @param body body
+     * @param success success
+     * @param error error
      */
-    post<T>(url: string, body: any): Observable<HttpResponse<T>> {
-        return this.http.post<T>(url, body, this.options());
+    post(url: string, body: any, success: (value) => void, error?: (error: any) => void) {
+        if (!!!error) {
+            error = this.error;
+        }
+        this.postObj(url, body).subscribe(value => {
+                const result = JSON.parse(JSON.stringify(value)).body;
+                if (result.success) {
+                    success(result.result);
+                } else {
+                    error(result.message);
+                }
+            },
+            error1 => error(error1));
+    }
+
+    /**
+     * 默认错误处理
+     * @param err err
+     */
+    private error(err: any): void {
+        console.error(err);
     }
 
     private options(): ({
