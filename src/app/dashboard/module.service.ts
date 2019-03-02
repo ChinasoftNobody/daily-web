@@ -12,15 +12,19 @@ export class ModuleService {
     constructor(private http: HttpService) {
     }
 
-    queryModules(param: { keyword: string , page: number, size: number}): Observable<HttpResponse<Object>> {
+    queryModules(param: { keyword: string, page: number, size: number }): Observable<HttpResponse<Object>> {
         return this.http.postObj(daily_server.path('moduleFindAll'), param);
     }
 
-    createModule(module: { name: string; type: ModuleType; desc: string }): Observable<HttpResponse<Object>>  {
+    createModule(module: { name: string; type: ModuleType; desc: string }): Observable<HttpResponse<Object>> {
         return this.http.postObj(daily_server.path('createModule'), module);
     }
 
-    queryModuleById(id: string): Observable<HttpResponse<Object>>   {
+    queryModuleById(id: string): Observable<HttpResponse<Object>> {
         return this.http.postObj(daily_server.path('queryModuleById'), {id: id});
+    }
+
+    queryModuleSettingById(id: string, success: (value) => void): void {
+        return this.http.post(daily_server.path('queryModuleById'), {id: id}, success);
     }
 }

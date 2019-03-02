@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PluginService} from './plugin.service';
 import {CreateModuleComponent} from '../dashboard/create/create-module.component';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {CreatePluginComponent} from './create/create-plugin.component';
+import {UpdatePluginComponent} from './create/update-plugin.component';
+import {PluginModel} from '../model/plugin.model';
 
 @Component({
     selector: 'app-plugin',
@@ -11,8 +12,8 @@ import {CreatePluginComponent} from './create/create-plugin.component';
 })
 export class PluginComponent implements OnInit {
     private bsModalRef: BsModalRef;
-    private plugins: any = [];
-    private queryParam = {
+    plugins: PluginModel[] = [];
+    queryParam = {
         keyword: '',
         page: 0,
         size: 10
@@ -39,9 +40,41 @@ export class PluginComponent implements OnInit {
      * 显示创建插件弹窗
      */
     showCreatePluginModal() {
-        this.bsModalRef = this.modalService.show(CreatePluginComponent);
+        this.bsModalRef = this.modalService.show(UpdatePluginComponent, {
+            initialState: {
+                create: true,
+                plugin: {}
+            }
+        });
         this.bsModalRef.content.closeBtnName = 'Close';
         this.modalService.onHide.subscribe(() => {
+            this.queryPlugins();
+        });
+    }
+
+    /**
+     * 编辑插件
+     * @param pluginItem pluginItem
+     */
+    showUpdatePluginModal(pluginItem: PluginModel) {
+        this.bsModalRef = this.modalService.show(UpdatePluginComponent, {
+            initialState: {
+                create: false,
+                plugin: pluginItem
+            }
+        });
+        this.bsModalRef.content.closeBtnName = 'Close';
+        this.modalService.onHide.subscribe(() => {
+            this.queryPlugins();
+        });
+    }
+
+    /**
+     * 删除插件
+     * @param pluginItem pluginItem
+     */
+    removePlugin(pluginItem: PluginModel) {
+        this.pluginService.removePlugin(pluginItem.id, () => {
             this.queryPlugins();
         });
     }

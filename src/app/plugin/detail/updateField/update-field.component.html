@@ -1,0 +1,72 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Create Plugin</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="email" class="form-control" id="name" aria-describedby="name"
+               [(ngModel)]="dataField.name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="desc">Description</label>
+        <textarea class="form-control" id="desc" placeholder="Description" [(ngModel)]="dataField.desc"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="type">Type</label>
+        <div class="input-group mb-3" id="type" dropdown>
+            <input type="text" class="form-control" [(ngModel)]="dataField.type"
+                   aria-label="Recipient's username" aria-describedby="basic-addon2" readonly>
+
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary dropdown-toggle"
+                        aria-controls="dropdown-basic" dropdownToggle type="button">Select
+                </button>
+                <ul id="dropdown-basic1" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+                <li role="menuitem" *ngFor="let item of fieldType" (click)="dataField.type = item"><a class="dropdown-item">{{item}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="dataField.required">
+        <label class="form-check-label" for="exampleCheck1">Required</label>
+    </div>
+    <div class="form-group">
+        <label for="defaultValue">Default Value</label>
+        <input class="form-control" id="defaultValue" placeholder="Default Value" [(ngModel)]="dataField.defaultValue"/>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck2" [(ngModel)]="dataField.validated">
+        <label class="form-check-label" for="exampleCheck2">Validated</label>
+    </div>
+    <div class="form-group">
+        <label for="type">Validate Type</label>
+        <div class="input-group mb-3" id="validateType" dropdown>
+            <input type="text" class="form-control" [(ngModel)]="dataField.validatorType"
+                   aria-label="Recipient's username" aria-describedby="basic-addon2" readonly>
+
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary dropdown-toggle"
+                        aria-controls="dropdown-basic" dropdownToggle type="button">Select
+                </button>
+                <ul id="dropdown-basic2" *dropdownMenu class="dropdown-menu"
+                    role="menu" aria-labelledby="button-basic">
+                    <li role="menuitem" *ngFor="let item of validatorType" (click)="dataField.validatorType = item"><a class="dropdown-item">{{item}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="validateValue">Validator Rule</label>
+        <input class="form-control" id="validateValue" placeholder="Validator Rule" [(ngModel)]="dataField.validateRule"/>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="updateField()">Ok
+    </button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
+</div>

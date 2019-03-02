@@ -1,11 +1,12 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">{{plugin?.name}}</li>
+        <li class="breadcrumb-item cursor-hand" aria-current="page" routerLink="/plugin">plugin</li>
+        <li class="breadcrumb-item active" aria-current="page">detail>{{plugin.name}}</li>
     </ol>
 </nav>
 <accordion>
     <accordion-group heading="Fields">
-        <button class="btn btn-outline-primary" (click)="addField()">add</button>
+        <button class="btn btn-outline-primary" (click)="showAddFieldModal()">add</button>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -34,8 +35,8 @@
                 <td>{{fieldItem.validateRule}}</td>
                 <td>
                     <span>
-                        <a class="btn btn-link">Modify</a>
-                        <a class="btn btn-link">Delete</a>
+                        <a class="btn btn-link text-primary" (click)="modifyField(fieldItem)">Modify</a>
+                        <a class="btn btn-link text-primary" (click)="deleteField(fieldItem)">Delete</a>
                     </span>
                 </td>
             </tr>

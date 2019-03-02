@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '../services/http.service';
 import {daily_server} from '../services/rest.config';
+import {PluginModel} from '../model/plugin.model';
 
 @Injectable({
     providedIn: 'root',
@@ -15,9 +16,7 @@ export class PluginService {
      * @param success success
      */
     queryPlugins(queryParam: { size: number; page: number; keyword: string }, success: (value) => void) {
-        this.httpService.post(daily_server.path('queryPlugins'), queryParam, value => {
-            success(value);
-        });
+        this.httpService.post(daily_server.path('queryPlugins'), queryParam, success);
     }
 
     /**
@@ -45,5 +44,41 @@ export class PluginService {
      */
     queryPluginById(id: string, success: (value) => void, error?: (error1) => void) {
         this.httpService.post(daily_server.path('queryPluginById'), id, value => success(value), error);
+    }
+
+    /**
+     * 跟新plugin
+     * @param plugin plugin
+     * @param success success
+     * @param error error
+     */
+    updatePlugin(plugin: PluginModel, success: (value) => void, error?: (error1) => void) {
+        this.httpService.post(daily_server.path('updatePlugin'), plugin, success, error);
+    }
+
+    /**
+     * 查询字段类型列表
+     * @param success success
+     * @param error error
+     */
+    queryFieldType(success: (value) => void, error?: (error1) => void) {
+        this.httpService.post(daily_server.path('queryFieldType'), {}, success, error);
+    }
+
+    /**
+     * 查询验证类型列表
+     * @param success success
+     */
+    queryValidatorType(success: (value) => void) {
+        this.httpService.post(daily_server.path('queryValidatorType'), {}, success);
+    }
+
+    /**
+     * 删除插件
+     * @param id id
+     * @param success success
+     */
+    removePlugin(id: string, success: (value) => void) {
+        this.httpService.post(daily_server.path('removePlugin'), id, success);
     }
 }

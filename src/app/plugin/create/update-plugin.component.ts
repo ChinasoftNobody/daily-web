@@ -1,19 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {BsModalRef} from 'ngx-bootstrap';
 import {PluginService} from '../plugin.service';
+import {PluginModel} from '../../model/plugin.model';
 
 @Component({
     selector: 'app-create-plugin-modal',
-    templateUrl: './create-plugin.component.html'
+    templateUrl: './update-plugin.component.html'
 })
-export class CreatePluginComponent implements OnInit{
-    public plugin: any = {
-        name: '',
-        desc: '',
-        type: '',
-        createTime: 0,
-        updateTime: 0
-    };
+export class UpdatePluginComponent implements OnInit{
+    public plugin: PluginModel;
+    create: boolean;
     public pluginTypes: any = [];
 
     constructor(public bsModalRef: BsModalRef,
@@ -27,8 +23,8 @@ export class CreatePluginComponent implements OnInit{
     /**
      * 创建插件
      */
-    createPlugin() {
-        this.pluginService.createPlugin(this.plugin, value => {
+    updatePlugin() {
+        this.pluginService.updatePlugin(this.plugin, value => {
             this.bsModalRef.hide();
         });
     }

@@ -14,10 +14,14 @@
     </div>
     <div class="row mt-lg-5">
         <div class="col-sm-6 mb-4" *ngFor="let item of modules">
-            <div class="card m-sm-auto shadow cursor-hand"  routerLink="/module/{{item.id}}">
-                <img class="card-img-top p-4" src="assets/imgs/tools.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h3 class="card-text text-center text-dark font-italic font-weight-light">{{item.name}}</h3>
+            <div class="card m-sm-auto shadow">
+                <h3 class="card-header text-center text-dark font-italic font-weight-light">{{item.name}}
+                    <button type="button" class="close">
+                        <span><img src="assets/svg/tools.svg" routerLink="/module/{{item.id}}/setting"></span>
+                    </button>
+                </h3>
+                <div class="card-body cursor-hand" routerLink="/module/{{item.id}}">
+                    <img class="card-img-top p-4" src="assets/imgs/tools.jpg" alt="Card image cap">
                 </div>
             </div>
         </div>

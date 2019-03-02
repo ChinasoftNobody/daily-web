@@ -16,13 +16,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CreateModuleComponent} from './dashboard/create/create-module.component';
 import {ModuleDetailComponent} from './module/module.detail.component';
 import {PluginComponent} from './plugin/plugin.component';
-import {CreatePluginComponent} from './plugin/create/create-plugin.component';
+import {UpdatePluginComponent} from './plugin/create/update-plugin.component';
 import {PluginDetailComponent} from './plugin/detail/plugin-detail.component';
+import {UpdateFieldComponent} from './plugin/detail/updateField/update-field.component';
+import {ModuleSettingComponent} from './module/setting/module-setting.component';
 
 @NgModule({
     declarations: [
         AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent,
-        CreateModuleComponent, ModuleDetailComponent, PluginComponent, CreatePluginComponent, PluginDetailComponent
+        CreateModuleComponent, ModuleDetailComponent, PluginComponent, UpdatePluginComponent, PluginDetailComponent,
+        UpdateFieldComponent, ModuleSettingComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -31,7 +34,7 @@ import {PluginDetailComponent} from './plugin/detail/plugin-detail.component';
         ModalModule.forRoot(), BsDropdownModule.forRoot(), PaginationModule.forRoot(), CollapseModule.forRoot(),
         AccordionModule.forRoot()
     ],
-    entryComponents: [LoginComponent, CreateModuleComponent, CreatePluginComponent],
+    entryComponents: [LoginComponent, CreateModuleComponent, UpdatePluginComponent, UpdateFieldComponent],
     providers: [CookieService],
     bootstrap: [AppComponent, FooterComponent]
 })

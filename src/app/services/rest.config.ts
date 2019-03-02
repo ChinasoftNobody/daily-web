@@ -47,6 +47,18 @@ export const daily_server: ServerInfo = {
             },
             'queryPluginById': {
                 path: '/plugin/queryPluginById'
+            },
+            'updatePlugin': {
+                path: '/plugin/update'
+            },
+            'queryFieldType': {
+                path: '/plugin/queryFieldType'
+            },
+            'queryValidatorType': {
+                path: '/plugin/queryValidatorType'
+            },
+            'removePlugin': {
+                path: '/plugin/delete'
             }
         }, path(key: string) {
             return this.domain + '://' + this.name + '/daily' + this.interfaces[key].path;

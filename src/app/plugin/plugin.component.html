@@ -22,17 +22,22 @@
             <th scope="col">Type</th>
             <th scope="col">Create Time</th>
             <th scope="col">Update Time</th>
+            <th scope="col">Operation</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="cursor-hand" *ngFor="let pluginItem of plugins; let no = index "
-            routerLink="/plugin/{{pluginItem.id}}">
+        <tr class="" *ngFor="let pluginItem of plugins; let no = index ">
             <th scope="row">{{no + 1}}</th>
             <td>{{pluginItem.name}}</td>
             <td>{{pluginItem.desc}}</td>
             <td>{{pluginItem.type}}</td>
             <td>{{pluginItem.createOn|date:'yyyy-MM-dd'}}</td>
             <td>{{pluginItem.updateOn|date:'yyyy-MM-dd'}}</td>
+            <td><span>
+                <a class="btn btn-link text-primary text-decoration-none" routerLink="/plugin/{{pluginItem.id}}">Detail</a>
+                <a class="btn btn-link text-primary" (click)="showUpdatePluginModal(pluginItem)">Edit</a>
+                <a class="btn btn-link text-primary" (click)="removePlugin(pluginItem)">Remove</a>
+            </span></td>
         </tr>
         </tbody>
     </table>
