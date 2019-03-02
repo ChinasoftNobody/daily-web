@@ -36,4 +36,14 @@ export class PluginService {
     createPlugin(plugin: any, success: (value) => void) {
         this.httpService.post(daily_server.path('createPlugin'), plugin, value => success(value));
     }
+
+    /**
+     * 根据ID查询插件信息
+     * @param id id
+     * @param success success
+     * @param error  error
+     */
+    queryPluginById(id: string, success: (value) => void, error?: (error1) => void) {
+        this.httpService.post(daily_server.path('queryPluginById'), id, value => success(value), error);
+    }
 }

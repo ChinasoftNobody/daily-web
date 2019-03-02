@@ -7,14 +7,14 @@ import {PluginService} from '../plugin.service';
     templateUrl: './create-plugin.component.html'
 })
 export class CreatePluginComponent implements OnInit{
-    private plugin: any = {
+    public plugin: any = {
         name: '',
         desc: '',
         type: '',
         createTime: 0,
         updateTime: 0
     };
-    private pluginTypes: any = [];
+    public pluginTypes: any = [];
 
     constructor(public bsModalRef: BsModalRef,
                 private pluginService: PluginService) {

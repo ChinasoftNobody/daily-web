@@ -44,6 +44,9 @@ export const daily_server: ServerInfo = {
             },
             'queryTypes': {
                 path: '/plugin/queryTypes'
+            },
+            'queryPluginById': {
+                path: '/plugin/queryPluginById'
             }
         }, path(key: string) {
             return this.domain + '://' + this.name + '/daily' + this.interfaces[key].path;

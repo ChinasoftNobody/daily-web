@@ -4,6 +4,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {LibraryComponent} from './library/library.component';
 import {ModuleDetailComponent} from './module/module.detail.component';
 import {PluginComponent} from './plugin/plugin.component';
+import {PluginDetailComponent} from './plugin/detail/plugin-detail.component';
 
 
 
@@ -15,6 +16,8 @@ const routes: Routes = [{
     path: 'module/:id', component: ModuleDetailComponent
 }, {
     path: 'plugin', component: PluginComponent
+}, {
+    path: 'plugin/:id', component: PluginDetailComponent
 }];
 
 @NgModule({
