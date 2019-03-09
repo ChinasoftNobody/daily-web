@@ -4,3 +4,41 @@
         <li class="breadcrumb-item active" aria-current="page">setting>{{module?.name}}</li>
     </ol>
 </nav>
+<div>
+    <tabset>
+        <tab heading="Plugins" id="pluginsTab">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-link text-primary" (click)="showAssociateModal()">Associate <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <!--<form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>-->
+                </div>
+            </nav>
+            <div class="dropdown-divider"></div>
+            <div class="container m-1">
+                <div class="row">
+                    <div class="col-3" *ngFor="let pluginItem of module.plugins">
+                        <div class="card">
+                            <div class="card-header">
+                                <span>{{pluginItem.type}}</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{pluginItem.name}}</h5>
+                                <p class="card-text">{{[pluginItem.desc]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tab>
+
+    </tabset>
+
+</div>
+

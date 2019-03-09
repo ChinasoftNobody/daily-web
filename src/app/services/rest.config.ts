@@ -59,6 +59,9 @@ export const daily_server: ServerInfo = {
             },
             'removePlugin': {
                 path: '/plugin/delete'
+            },
+            'queryPluginByModuleId': {
+                path: '/module/queryPluginsByModuleId'
             }
         }, path(key: string) {
             return this.domain + '://' + this.name + '/daily' + this.interfaces[key].path;

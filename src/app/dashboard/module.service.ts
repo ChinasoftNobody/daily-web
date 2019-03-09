@@ -27,4 +27,8 @@ export class ModuleService {
     queryModuleSettingById(id: string, success: (value) => void): void {
         return this.http.post(daily_server.path('queryModuleById'), {id: id}, success);
     }
+
+    associatePlugins(associatePlugins: any, success: (value) => void) {
+
+    }
 }

@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Associate Plugins</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let ite of plugins" (click)="selectOrUnSelect(ite)"
+            [ngClass]="checkExist(ite.id)?'list-group-item active':'list-group-item'">{{ite.name}}</li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="associate()">Ok</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
+</div>

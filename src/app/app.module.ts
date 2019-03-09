@@ -8,7 +8,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {FooterComponent} from './common/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './common/header/login/login.component';
-import {AccordionModule, BsDropdownModule, CollapseModule, ModalModule, PaginationModule, TypeaheadModule} from 'ngx-bootstrap';
+import {AccordionModule, BsDropdownModule, CollapseModule, ModalModule, PaginationModule, TabsModule, TypeaheadModule} from 'ngx-bootstrap';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClientModule} from '@angular/common/http';
 import {LibraryComponent} from './library/library.component';
@@ -20,21 +20,22 @@ import {UpdatePluginComponent} from './plugin/create/update-plugin.component';
 import {PluginDetailComponent} from './plugin/detail/plugin-detail.component';
 import {UpdateFieldComponent} from './plugin/detail/updateField/update-field.component';
 import {ModuleSettingComponent} from './module/setting/module-setting.component';
+import {AssociatePluginComponent} from './module/setting/associate/associate-plugin.component';
 
 @NgModule({
     declarations: [
         AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent,
         CreateModuleComponent, ModuleDetailComponent, PluginComponent, UpdatePluginComponent, PluginDetailComponent,
-        UpdateFieldComponent, ModuleSettingComponent
+        UpdateFieldComponent, ModuleSettingComponent, AssociatePluginComponent
     ],
     imports: [
         BrowserAnimationsModule,
         BrowserModule, HttpClientModule, TypeaheadModule.forRoot(),
         AppRoutingModule, FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), BsDropdownModule.forRoot(), PaginationModule.forRoot(), CollapseModule.forRoot(),
-        AccordionModule.forRoot()
+        AccordionModule.forRoot(), TabsModule.forRoot()
     ],
-    entryComponents: [LoginComponent, CreateModuleComponent, UpdatePluginComponent, UpdateFieldComponent],
+    entryComponents: [LoginComponent, CreateModuleComponent, UpdatePluginComponent, UpdateFieldComponent, AssociatePluginComponent],
     providers: [CookieService],
     bootstrap: [AppComponent, FooterComponent]
 })
