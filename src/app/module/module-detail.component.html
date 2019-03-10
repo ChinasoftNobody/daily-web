@@ -1,10 +1,27 @@
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item cursor-hand" aria-current="page" routerLink="">module</li>
+    <ol class="breadcrumb bg-transparent">
+        <li class="breadcrumb-item cursor-hand text-primary" aria-current="page" routerLink="">module</li>
         <li class="breadcrumb-item active" aria-current="page">detail>{{module?.name}}</li>
     </ol>
 </nav>
-<div class="p-3">
-
+<div class="dropdown-divider"></div>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-link text-primary" (click)="showCreateRecordModal()">New <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="dropdown-divider"></div>
+    <div *ngFor="let record of records">
+        <div *ngFor="let dataItem of record.data">{{dataItem.key}}:{{dataItem.value}}</div>
+    </div>
 </div>
 

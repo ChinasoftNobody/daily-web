@@ -21,12 +21,13 @@ import {PluginDetailComponent} from './plugin/detail/plugin-detail.component';
 import {UpdateFieldComponent} from './plugin/detail/updateField/update-field.component';
 import {ModuleSettingComponent} from './module/setting/module-setting.component';
 import {AssociatePluginComponent} from './module/setting/associate/associate-plugin.component';
+import {UpdateRecordComponent} from './module/record/update-record.component';
 
 @NgModule({
     declarations: [
         AppComponent, HeaderComponent, FooterComponent, DashboardComponent, LoginComponent, LibraryComponent,
         CreateModuleComponent, ModuleDetailComponent, PluginComponent, UpdatePluginComponent, PluginDetailComponent,
-        UpdateFieldComponent, ModuleSettingComponent, AssociatePluginComponent
+        UpdateFieldComponent, ModuleSettingComponent, AssociatePluginComponent, UpdateRecordComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -35,7 +36,8 @@ import {AssociatePluginComponent} from './module/setting/associate/associate-plu
         ModalModule.forRoot(), BsDropdownModule.forRoot(), PaginationModule.forRoot(), CollapseModule.forRoot(),
         AccordionModule.forRoot(), TabsModule.forRoot()
     ],
-    entryComponents: [LoginComponent, CreateModuleComponent, UpdatePluginComponent, UpdateFieldComponent, AssociatePluginComponent],
+    entryComponents: [LoginComponent, CreateModuleComponent, UpdatePluginComponent, UpdateFieldComponent,
+        AssociatePluginComponent, UpdateRecordComponent],
     providers: [CookieService],
     bootstrap: [AppComponent, FooterComponent]
 })
