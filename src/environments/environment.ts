@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  daily_server: 'localhost:8082'
+  daily_server: 'localhost'
 };
 
 /*
