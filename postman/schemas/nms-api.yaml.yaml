@@ -1,0 +1,318 @@
+openapi: '3.0.0'
+info:
+  version: '1.0.0'
+  title: 'nms api'
+  description: nms api
+  contact:
+    name: liguanghao
+    email: liguanghao@coresat.cn
+servers:
+  - url: http://localhost:8101/nms
+    description: dev
+  - url: http://192.168.1.138:8080/nms
+    description: "env138"
+paths:
+  /channel/mf/group:
+    get:
+      summary: list reverse channel group
+      operationId: listMfChannelGroup
+      parameters:
+        - name: beam_id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: success result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelGroupListVo'
+        500:
+          $ref: "#/components/responses/5xx"
+    post:
+      summary: create reverse channel group
+      operationId: createMfChannelGroup
+      requestBody:
+        description: channel group info
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/ChannelGroupVo"
+      responses:
+        200:
+          description: success result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChannelGroupVo"
+        500:
+          $ref: "#/components/responses/5xx"
+    put:
+      summary: update reverse channel group
+      operationId: updateMfChannelGroup
+      requestBody:
+        description: channel group info
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChannelGroupVo"
+      responses:
+        200:
+          description: success result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChannelGroupVo"
+        500:
+          $ref: "#/components/responses/5xx"
+    delete:
+      summary: "delete reverse channel group"
+      operationId: deleteMfChannelGroup
+      description: delete the channel group and channels in the group
+      parameters:
+        - name: beam_id
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: group_id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: success
+        500: 
+          $ref: "#/components/responses/5xx"
+  /main-site/{site_id}/ne-ncc/reverse-resource-group:
+    parameters:
+      - name: site_id
+        required: true
+        in: path
+        schema:
+          type: integer
+    get:
+      summary: list all reverse resource group
+      operationId: listResourceGroup
+      responses:
+        200:
+          description: success result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResourceGroupVo"
+        500:
+          $ref: "#/components/responses/5xx"
+    post:
+      summary: create resource group
+      operationId: createResourceGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - channel_group_id
+              properties:
+                channel_group_id:
+                  type: integer
+                  description: "channel group id"
+      responses:
+        200:
+          description: success result
+        500:
+          $ref: "#/components/responses/5xx"
+    delete:
+      summary: delete resource group
+      operationId: deleteResourceGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - channel_group_id
+              properties:
+                channel_group_id:
+                  type: integer
+      responses:
+        200:
+          description: success result
+        500:
+          $ref: "#/components/responses/5xx"
+  /main-site/{site_id}/ne-ncc/reverse-resource:
+    parameters:
+      - name: site_id
+        required: true
+        in: path
+        schema:
+          type: integer
+    post:
+      summary: add resource to resource group
+      operationId: addReverseResource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required: 
+                - channel_group_id
+                - channel_ids
+              properties:
+                channel_group_id:
+                  type: integer
+                channel_ids:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        200:
+          description: success result
+        500:
+          $ref: "#/components/responses/5xx"
+    delete:
+      summary: remove resource from resource group
+      operationId: deleteReverseResource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required: 
+                - channel_group_id
+                - channel_ids
+              properties:
+                channel_group_id:
+                  type: integer
+                channel_ids:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        200:
+          description: success result
+        500:
+          $ref: "#/components/responses/5xx"
+components:
+  schemas:
+    ResourceGroupVo:
+      properties:
+        channel_group_id:
+          type: integer
+        roll_down: 
+          type: number
+          format: double
+        frame_count:
+          type: integer
+        btu_count:
+          type: integer
+        symbol_rate:
+          type: integer
+          format: int64
+        channels:
+          type: array
+          items:
+            $ref: "#/components/schemas/ResourceVo"
+    ResourceVo:
+      properties:
+        channel_id: 
+          type: integer
+        superframe_centre_frequency:
+          type: integer
+          format: int64
+        logon_contention_on:
+          type: boolean
+        logon_contention:
+          type: object
+          $ref: "#/components/schemas/ResourceLogon"
+        control:
+          type: boolean
+        bounded:
+          type: boolean
+    ResourceLogon:
+      properties:
+        logon_frame_number:
+          type: integer
+        logon_btu_number:
+          type: integer
+        logon_btu_repeat_count:
+          type: integer
+    ChannelGroupVo:
+      required:
+        - beam_id
+        - symbol_rate
+        - frame_count
+        - btu_count
+        - roll_down
+        - central_frequency
+      properties:
+        beam_id:
+          type: integer
+        group_id:
+          type: integer
+        symbol_rate:
+          type: integer
+          format: int64
+        roll_down:
+          type: number
+          format: double
+        frame_count:
+          type: integer
+        btu_count:
+          type: integer
+        central_frequency:
+          type: integer
+          format: int64
+    ChannelGroupListVo:
+      properties:
+        group_id:
+          type: integer
+        symbol_rate: 
+          type: integer
+          format: int64
+        roll_down:
+          type: integer
+          format: int64
+        frame_count:
+          type: integer
+        btu_count:
+          type: integer
+        central_frequency:
+          type: integer
+          format: int64
+        channels:
+          type: array
+          items:
+            $ref: "#/components/schemas/MfChannelVo"
+    MfChannelVo:
+      properties:
+        channel_id: 
+          type: integer
+        frequency:
+          type: integer
+          format: int64
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        code: 
+          description: error code number
+          type: integer
+        message:
+          description: A human readable error message
+          type: string
+  responses:
+    5xx:
+      description: common bisieness error
+      content: 
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: Auth-Token
+security:
+  - ApiKey: []
